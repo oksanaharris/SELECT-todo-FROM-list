@@ -41,4 +41,27 @@ ALTER TABLE tasks
   ALTER COLUMN updated_at SET NOT NULL;
 
 INSERT INTO tasks
-VALUES ('id = default value', 'title = 'Study SQL'', 'description = 'Complete this exercise'', 'created_at = now()', 'updated_at = now()', 'completed_at = NULL');
+VALUES (DEFAULT, 'Study SQL', 'Complete this exercise', now(), now(), NULL);
+
+INSERT INTO tasks (title, description)
+VALUEs ('Study PostreSQL', 'Read all the documentation');
+
+SELECT title FROM tasks WHERE completed_at IS NULL;
+
+UPDATE tasks SET completed_at = NOW() WHERE title = 'Study SQL';
+
+SELECT title, description FROM tasks WHERE completed_at IS NULL;
+
+SELECT * FROM tasks ORDER BY created_at DESC;
+
+INSERT INTO tasks (title, description)
+VALUES ('mistake 1', 'a test entry');
+
+INSERT INTO tasks (title, description)
+VALUES ('mistake 2', 'another test entry');
+
+INSERT INTO tasks (title, description)
+VALUES ('third mistake', 'another test entry');
+
+SELECT title FROM tasks WHERE title LIKE '%mistake%';
+
